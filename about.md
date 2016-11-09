@@ -4,12 +4,12 @@ title: About
 permalink: /about/
 ---
 
-Some information about you!
+My name is Adrián Núñez-Marcos, I'm a Phd candidate at Deustotech-INTERNET, University of Deusto, Spain.
 
-### More Information
+### Research Lines
 
-A place to include any other types of information that you'd like to include about yourself.
+Neural Networks, Computer Vision, Human Activity Recognition, Sports Sciences.
 
 ### Contact me
 
-[email@domain.com](mailto:email@domain.com)
+[adrian.nunez@deusto.es](mailto:adrian.nunez@deusto.es)
