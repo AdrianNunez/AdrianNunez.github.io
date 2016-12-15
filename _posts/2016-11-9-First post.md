@@ -13,4 +13,4 @@ def show
     format.json { render json: @widget }
   end
 end
-{% endhighlight %
+{% endhighlight %}
