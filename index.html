@@ -15,7 +15,8 @@ layout: default
       <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Read More</a>
       <h4>
       {% for tag in post.tags %}
-      	{{ tag  | remove: '<p>' | remove: '</p>' }} 
+      	{{ tag  | remove: '<p>' | remove: '</p>' }}
+      {% endfor %} 
       </h4>
     </article>
   {% endfor %}
