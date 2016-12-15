@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: page
 title: Best papers in Activity Recognition with Neural Networks
 categories: NeuralNetworks ActivityRecognition
 tags: Neural Networks Activity Recognition Papers
