@@ -10,6 +10,10 @@ My name is Adrián Núñez-Marcos, I'm a Phd student at Deustotech-INTERNET, Uni
 
 Neural Networks, Computer Vision, Human Activity Recognition.
 
+### Scientific accounts
+
+* [Google scholar](https://scholar.google.es/citations?user=CRdHnOEAAAAJ&hl=es&authuser=2)
+
 ### Contact me
 
 [adrian.nunez@deusto.es](mailto:adrian.nunez@deusto.es)
