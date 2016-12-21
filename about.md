@@ -12,10 +12,10 @@ Neural Networks, Computer Vision, Human Activity Recognition.
 
 ### Scientific accounts
 
-* [Google scholar](https://scholar.google.es/citations?user=CRdHnOEAAAAJ&hl=es&authuser=2)
+* [Google Scholar](https://scholar.google.es/citations?user=CRdHnOEAAAAJ&hl=es&authuser=2)
 
 ### Contact me
 
-[adrian.nunez@deusto.es](mailto:adrian.nunez@deusto.es)
+Contact: [adrian.nunez@deusto.es](mailto:adrian.nunez@deusto.es)
 
-Visit my personal page: [MORElab personal page](http://morelab.deusto.es/people/members/adrian-nunez/)
+Visit my personal page of the research group: [MORElab personal page](http://morelab.deusto.es/people/members/adrian-nunez/)
