@@ -10,4 +10,4 @@ permalink: /miscellany/
 
 ### Courses
 
-* Coursera: Detección de Objetos, Universidad Autónoma de Barcelona [Certificate](https://www.coursera.org/account/accomplishments/certificate/4V84PU57G494)
+* Coursera: Detección de Objetos, Universidad Autónoma de Barcelona ([Certificate](https://www.coursera.org/account/accomplishments/certificate/4V84PU57G494))

@@ -13,6 +13,8 @@ Neural Networks, Computer Vision, Human Activity Recognition.
 ### Scientific accounts
 
 * [Google Scholar](https://scholar.google.es/citations?user=CRdHnOEAAAAJ&hl=es&authuser=2)
+* [Research Gate](https://www.researchgate.net/profile/Adrian_Nunez_Marcos)
+* [ORCID](http://orcid.org/0000-0002-5324-4514)
 
 ### Contact me
 
