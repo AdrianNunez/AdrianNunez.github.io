@@ -4,7 +4,9 @@ title: About
 permalink: /about/
 ---
 
-My name is Adrián Núñez-Marcos, I'm a Phd student at Deustotech-INTERNET, University of Deusto, Spain. I received my BSc in Computer Engineering in 2015 and the MSc in Computer Sciences and Intelligent Systems in 2016 from the University of the Basque Country, Spain.
+### Bio
+
+My name is Adrián Núñez-Marcos, I'm a Phd student at Deustotech-INTERNET, University of Deusto, Spain and a Basque Government grant holder. My research centers around the application of Deep Learning and Computer Vision techniques to the field of Human Activity Recognition. I received my BSc in Computer Engineering in 2015 and the MSc in Computer Sciences and Intelligent Systems in 2016 from the University of the Basque Country, Spain. Previously, I enrolled the Erasmus+ program in Albert-Ludwigs-Universität Freiburg for 6 months in 2015 where I attended subjects like Statistical Pattern Recognition and Introduction to Mobile Robotics. Moreover, I did an internship for 8 months from October 2015 to June 2016.
 
 ### Research Lines
 
