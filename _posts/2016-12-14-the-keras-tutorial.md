@@ -1,15 +1,15 @@
 ---
 layout: page
-title: The Keras Tutorial
+title: The Keras Tutorial: Introduction
 categories: Neural_Networks Keras Tutorial
-tags: Neural Networks Keras sTutorial
+tags: Neural Networks Keras Tutorial
 ---
 
 #### Index
 
 * What is Keras?
 * Download and Install Keras
-* Your first Neural Network
+* Our first Neural Network
 
 ### What is Keras?
 
@@ -31,9 +31,33 @@ pip install numpy scipy scikit-learn pillow h5py
 
 As I appointed in my first paragraph, Keras works on top of either Theano or Tensorflow, therefore we will need to install one of them. I work with Theano because it's easier to install in my case.
 
-### Your first Neural Network
+{% highlight ruby %}
+pip install Theano
+pip install keras
+{% endhighlight %}
 
-First I will say that Keras has two different structures to create Neural Networks: the Sequential Model or the Functional API. We will work with the second one through the tutorial as it allows more freedom. If you have heard about the Graph Model I have to say that it has been removed (therefore it's deprecated) in the version 1.0.
+Now we have to specify that we want Theano as a backend ([link](https://keras.io/backend/)).
+
+{% highlight ruby %}
+nano ~/.keras/keras.json
+{% endhighlight %}
+
+In this file change the backend to Theano and the image ordering from 'tf' (which is the default option for Tensorflow) to 'th'. Note that the image ordering in Tensorflow is (width, height, channels) and in Theano is (channels, width, height). Finally, if you want to run Keras in your GPU you have to create a file '~/.theanorc' ('touch ~/.theanorc' in your command prompt) and include the following:
+
+{% highlight ruby %}
+[global]
+floatX = float32
+device = gpu0
+ 
+[nvcc]
+fastmath = True
+{% endhighlight %}
+
+If you want to use the CPU change 'gpu0' to 'cpu'. With this final steps we should have keras ready to work with Theano. 
+
+### Our first Neural Network
+
+First I will say that Keras has two different structures to create Neural Networks: the Sequential Model or the Functional API. We will work with the second one through the tutorial as it allows more freedom. If you have heard about the Graph Model I have to say that it has been removed (therefore it's deprecated) in the version 1.0 ([link](https://github.com/fchollet/keras/issues/2802#issuecomment-221314411)).
 
 Let's start coding! Our first neural network is going to have a single input and a final dense layer (which will be the output). The example code can also be shown in the [Keras Models section](https://keras.io/models/model/) but we will go through each of the lines to understand better what we are doing.
 
