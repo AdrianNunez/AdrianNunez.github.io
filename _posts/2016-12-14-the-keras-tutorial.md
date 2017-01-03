@@ -3,7 +3,10 @@ layout: page
 title: The Keras Tutorial: Introduction
 categories: Neural_Networks Keras Tutorial
 tags: Neural Networks Keras Tutorial
+comments: True
 ---
+
+Comments: {% if page.comments %}<script id="dsq-count-scr" src="//https-adriannunez-github-io.disqus.com/count.js" async></script>{% endif %}
 
 #### Index
 
@@ -76,3 +79,26 @@ The Functional API forces you to include an input layer. Here you have to specif
 Now we include a Dense layer by calling the function and providing the number of neurons for that layer (in this case 32). The next step is to stack the output layer or dense layer on top of the input layer, i.e., we have to connect them. In this type of model we do this by providing the variable of the last layer at the end of the new layer (check the 'a' between parenthesis after the Dense layer).
 
 Finally, we have to instantiate the Model or creating a container for it. We can do this with the Model function, providing the input and output. In this case providing the variables of the input and output layers. We can also provide a Python list for multi-input and output.
+
+{% if page.comments %}
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = '//https-adriannunez-github-io.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+{% endif %}
