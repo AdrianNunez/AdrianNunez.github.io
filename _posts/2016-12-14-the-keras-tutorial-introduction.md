@@ -1,6 +1,6 @@
 ---
 layout: post
-title: The Keras Tutorial Introduction
+title: The Keras Tutorial - Introduction
 categories: Neural_Networks Keras Tutorial
 tags: Neural Networks Keras Tutorial
 comments: true
