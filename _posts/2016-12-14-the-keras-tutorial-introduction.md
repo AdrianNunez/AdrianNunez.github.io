@@ -94,6 +94,32 @@ model = Model(input=[a, b], output=c)
 
 This is an example of a multi-input neural network, in this case a and b. At some point in the code we have to fuse both of them into one stream, which we cal z. Finally, we will output c.
 
+Anyway, now that the model is created we have to configure it. To do so we have to call the function 'compile' of the model:
+
+{% highlight python %}
+compile(self, optimizer, loss, metrics=None, loss_weights=None, sample_weight_mode=None)
+{% endhighlight %}
+
+We have to pass an optimizer and a loss function at least. You can check the [optimizers section](https://keras.io/optimizers/) and the [loss, objective or cost function section](https://keras.io/objectives/) of the webpage of Keras for information about the available functions.
+
+Once we have the model ready is time to actually train it. This can be done in various ways, we explain the simple one: using the 'fit' function of the model:
+
+{% highlight python %}
+fit(self, x, y, batch_size=32, nb_epoch=10, verbose=1, callbacks=None, validation_split=0.0, validation_data=None, shuffle=True, class_weight=None, sample_weight=None, initial_epoch=0)
+{% endhighlight %}
+
+This function expects at least the input data X (which can be a list if it's a muti-input network), the true labels Y (again, it can be an array). You can also specify the batch size, number of epochs, the validation split (between 0 and 1, percentage of the training data that will be used for validation) or validation data (a pair of validation data and true labels), etc.
+
+Finally, you can evaluate your trained model with the 'evaluate' function:
+
+{% highlight python %}
+evaluate(self, x, y, batch_size=32, verbose=1, sample_weight=None)
+{% endhighlight %}
+
+You have to provide it with test data or data that has not been used during training. The accuracy provided by this process measures the real quality of your model.
+
+And this concludes our first neural network tutorial! I will write now about some basic stuff about Neural Networks: layers, initialisation, etc. I hope it's clear enough. For any question or suggestions please use the comments section below.
+
 ### The basic layers
 
 * Input layer: The input layer specifies the shape of the input. This replaces the old and mandatory parameter 'input_shape' that had to be added to the first layer of the network. The parameter shape expects the shape without the batch size. The final comma is also necessary.
@@ -131,3 +157,13 @@ keras.layers.merge(layers, mode, concat_axis)
 {% highlight python %}
 keras.layers.core.Dropout(p)
 {% endhighlight %}
+
+### Initialisation
+
+The [initialisation section](https://keras.io/initializations/) in the webpage of Keras provides a list of all the initialisation options implemented in Keras. You have to import them:
+
+{% highlight python %}
+from keras.initializations import uniform
+{% endhighlight %}
+
+An example of importing the uniform initialisation function. These functions are given as the value of the parameter 'init' that some Keras layers have, e.g., the Dense layer.
