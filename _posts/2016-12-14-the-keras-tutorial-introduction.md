@@ -11,10 +11,11 @@ comments: true
 * What is Keras?
 * Download and Install Keras
 * Our first Neural Network
+* The basic layers
 
 ### What is Keras?
 
-[Keras](https://keras.io/) is a high-level neural networks library written in Python and built on top of Theano or Tensorflow. That means you need one of them as a backend for Keras to work. I have been working with Neural Networks for a while, I have tried Caffe, Tensorflow and Torch and now I'm working with Keras. It is main advantage is the minimalism, it allows the creation of big networks with a few lines of code. It allows multi-input and multi-ouput networks, convolutional and recurrent neural networks, embeddings, etc. I'm really comfortable working with it so I thought it would be nice to write some paragraphs to explain how it works and the tricks I found. I hope this tutorial is helpful for new users.
+[Keras](https://keras.io/) is a high-level neural networks library written in Python and built on top of [Theano](http://deeplearning.net/software/theano/) or [Tensorflow](https://www.tensorflow.org/). That means you need one of them as a backend for Keras to work. I have been working with Neural Networks for a while, I have tried  [Caffe](http://caffe.berkeleyvision.org/), Tensorflow and [Torch](http://torch.ch/) and now I'm working with Keras. It is main advantage is the minimalism, it allows the creation of big networks with a few lines of code. It allows multi-input and multi-ouput networks, convolutional and recurrent neural networks, embeddings, etc. I'm really comfortable working with it so I thought it would be nice to write some paragraphs to explain how it works and the tricks I found. I hope this tutorial is helpful for new users.
 
 ### Download and Install Keras
 
@@ -49,18 +50,21 @@ In this file change the backend to Theano and the image ordering from 'tf' (whic
 [global]
 floatX = float32
 device = gpu0
- 
-[nvcc]
-fastmath = True
+
+[lib]
+cnmem = 1.0 
+
+[blas]
+ldflags="-L/usr/lib/openblas-base -lopenblas"
 {% endhighlight %}
 
 If you want to use the CPU change 'gpu0' to 'cpu'. With this final steps we should have keras ready to work with Theano. 
 
 ### Our first Neural Network
 
-First I will say that Keras has two different structures to create Neural Networks: the Sequential Model or the Functional API. We will work with the second one through the tutorial as it allows more freedom. If you have heard about the Graph Model I have to say that it has been removed (therefore it's deprecated) in the version 1.0 ([link](https://github.com/fchollet/keras/issues/2802#issuecomment-221314411)).
+First I will say that Keras has two different structures to create Neural Networks: the Sequential Model and the Functional API. We will work with the second one through the tutorial as it allows more freedom. If you have heard about the Graph Model I have to say that it was removed (therefore it's now deprecated) in the version 1.0 ([link](https://github.com/fchollet/keras/issues/2802#issuecomment-221314411)).
 
-Let's start coding! Our first neural network is going to have a single input and a final dense layer (which will be the output). The example code can also be shown in the [Keras Models section](https://keras.io/models/model/) but we will go through each of the lines to understand better what we are doing.
+So let's start coding! Our first neural network is going to have a single input and a final dense layer (which will be the output). The example code can also be shown in the [Keras Models section](https://keras.io/models/model/) but we will go through each of the lines to understand better what we are doing.
 
 {% highlight python %}
 from keras.models import Model
@@ -71,10 +75,59 @@ b = Dense(32)(a)
 model = Model(input=a, output=b)
 {% endhighlight %}
 
-The first two lines are the imports. We can also avoid them and put the full name for each function and structure, like 'keras.layers.Input', but it's more readable if we put them.
+The first two lines are the imports. No need for explanation, we need to import all the layers, optimizers, functions for the initilisation of layers, etc. we want to use.
 
 The Functional API forces you to include an input layer. Here you have to specify the shape of your input (without the batch size). In this example we only have a 1D input of 32 values, i.e., the shape of your input would be (batch size, number of features) but in this layer you only have to include (number of features). The comma after the value 32 is also mandatory in some cases or it can throw errors. Anyway, your full input layer is stored in the variable 'a'.
 Now we include a Dense layer by calling the function and providing the number of neurons for that layer (in this case 32). The next step is to stack the output layer or dense layer on top of the input layer, i.e., we have to connect them. In this type of model we do this by providing the variable of the last layer at the end of the new layer (check the 'a' between parenthesis after the Dense layer).
 
-Finally, we have to instantiate the Model or creating a container for it. We can do this with the Model function, providing the input and output. In this case providing the variables of the input and output layers. We can also provide a Python list for multi-input and output.
+Finally, we have to instantiate the Model or create a container for it. We can do this with the Model function, providing the input and output. In this case providing the variables of the input and output layers. We can also provide a Python list for multi-input and output.
 
+{% highlight python %}
+a = Input(shape=(32,))
+b = Input(shape=(32,))
+...
+z = merge([a,b], mode='concat', concat_axis = -1)
+...
+c = Dense(32)(z)
+model = Model(input=[a, b], output=c)
+{% endhighlight %}
+
+This is an example of a multi-input neural network, in this case a and b. At some point in the code we have to fuse both of them into one stream, which we cal z. Finally, we will output c.
+
+### The basic layers
+
+* Input layer: The input layer specifies the shape of the input. This replaces the old and mandatory parameter 'input_shape' that had to be added to the first layer of the network. The parameter shape expects the shape without the batch size. The final comma is also necessary.
+
+{% highlight python %}
+keras.layers.Input(shape, batch_shape, dtype, name)
+{% endhighlight %}
+
+* Dense layer: The Dense layer or Fully-connected layer is the most basic Neural Network layer composed by a number of neurons specified by the parameter output_dim (greater than 0).
+
+{% highlight python %}
+keras.layers.core.Dense(output_dim, init='glorot_uniform', activation=None, weights=None, W_regularizer=None, b_regularizer=None, activity_regularizer=None, W_constraint=None, b_constraint=None, bias=True, input_dim=None)
+{% endhighlight %}
+
+* Activation (layer): Not really a layer. It applies an activation function (which must be included as a parameter) to the previous layer's neurons. Its use can be avoided by specifying the parameter 'activation' in the previous layer. Anyway, it comes in handy when you want to apply a function between the linear and non-linear operation. You can check in [the code](https://github.com/fchollet/keras/blob/master/keras/activations.py) the activation functions included in Keras. These are available: softmax, elu, softplus, softsign, relu, tanh, sigmoid, hard_sigmoid and linear. Note that the linear function is the identity function as, by default, the previous layer applies the linear activation function by default.
+
+{% highlight python %}
+keras.layers.core.Activation(activation)
+{% endhighlight %}
+
+* Flatten layer: Not really a layer. It's a reshape operation to transform a nD array into a 2D array with shape (batch size, features). This operation is usually followed by a Dense layer.
+
+{% highlight python %}
+keras.layers.core.Flatten()
+{% endhighlight %}
+
+* Merge layer: The merge layer fuses various tensors into a single one. This is useful to create multiple streams (each one with its own input) and then merge them. The first argument is a list of the tensors, the mode specifies how to merge them (concatenation, sum...) and the concat_axis tells the layer which axis to pick to make the concatenation (-1 by default).
+
+{% highlight python %}
+keras.layers.merge(layers, mode, concat_axis)
+{% endhighlight %}
+
+* Dropout layer: Not really a layer. From the paper ['Dropout: A Simple Way to Prevent Neural Networks from Overfitting, 2014'](http://www.jmlr.org/papers/volume15/srivastava14a/srivastava14a.pdf) The dropout operation is a way of preventing overfitting and hence improving the generalisation. During training time, it drops with a probability p (given as a parameter) the previous layer's neurons, i.e., their activations become 0.
+
+{% highlight python %}
+keras.layers.core.Dropout(p)
+{% endhighlight %}
