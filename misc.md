@@ -10,8 +10,8 @@ permalink: /miscellany/
 
 ### Courses
 
-* Coursera: Detección de Objetos, Universidad Autónoma de Barcelona ([Certificate](https://www.coursera.org/account/accomplishments/certificate/4V84PU57G494))
+* Coursera: Object Detection, Universitat Autònoma de Barcelona (UAB) ([Certificate](https://www.coursera.org/account/accomplishments/certificate/4V84PU57G494))
 
 ### Others
 
-* Attended to [1st Bilbao Data Science Workshop, 19-20 December 2016, Spain](http://www.bcamath.org/es/workshops/bidas2016/general)
+* Attended the [1st Bilbao Data Science Workshop, 19-20 December 2016, Spain](http://www.bcamath.org/es/workshops/bidas2016/general)
