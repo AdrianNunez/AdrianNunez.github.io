@@ -18,8 +18,9 @@ html {
 }
 
 body {
-	background: $white;
+  background: $white;
   font: 18px/1.4 $helvetica;
+  font-family: 'Open Sans';
   color: $darkGray;
 }
 
@@ -198,6 +199,10 @@ img {
   font-weight: 300;
   font-size: 20px;
   letter-spacing: 1px;
+  a:hover {
+	text-decoration: none;
+	color: #6E6E6E;
+  }
 }
 
 .site-description {
@@ -237,6 +242,10 @@ nav {
   }
   a > a:last-child {
     border-right: 0px;
+  }
+  a:hover {
+	text-decoration: none;
+	color: #6E6E6E;
   }
 }
 
@@ -305,14 +314,78 @@ footer {
 
 .cloud {
    line-height: 150%;
-   min-width: 10px;
-   width: 100%;
-   border-radius: 15px;
-   padding: 5px 8px 5px 8px;
+   border-radius: 25px;
+   padding: 8px 12px 8px 12px;
    margin: 5px;
-   margin-bottom: 1pt;
+   margin-bottom: 1pt; 
 }
 
+.interest {
+   background-color: #CECEF6;
+   font-size: 90%;
+   opacity: 0.8; 
+}
+.interest:hover {
+   opacity: 1;
+}
+
+.otherprofiles {
+   background-color: #F3E2A9;
+   font-size: 90%;
+   opacity: 0.8; 
+   a {
+	color: inherit;
+   }
+   a:hover {
+	text-decoration: none;
+   }
+}
+.otherprofiles:hover {
+   opacity: 1;
+}
+
+blockquote {
+    font-family: Georgia, serif;
+    position: relative;
+    margin: 0.5em;
+    padding: 0.5em 2em 0.5em 3em;
+}
+/* Thanks: http://callmenick.com/post/styling-blockquotes-with-css-pseudo-classes */
+blockquote:before {
+    font-family: Georgia, serif;
+    position: absolute;
+    font-size: 6em;
+    line-height: 1;
+    top: 0;
+    left: 0;
+    content: "\201C";
+}
+blockquote:after {
+    font-family: Georgia, serif;
+    position: absolute;
+   /* display: block; don't use this, it raised the quote too high from the bottom - defeated line-height? */
+    float:right;
+    font-size:6em;
+    line-height: 1;
+    right:0;
+    bottom:-0.5em;
+    content: "\201D";
+}
+blockquote footer {
+    padding: 0 2em 0 0;
+    text-align:right;
+}
+blockquote cite:before {
+    content: "\2013";
+}
+
+.shadow {
+    text-shadow: 2px 2px #BDBDBD;
+}
+
+.lightershadow {
+    text-shadow: 1px 1px #D8D8D8;
+}
 
 // Settled on moving the import of syntax highlighting to the bottom of the CSS
 // ... Otherwise it really bloats up the top of the CSS file and makes it difficult to find the start
