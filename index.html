@@ -2,11 +2,26 @@
 layout: default
 ---
 
-<div class="posts">
-  {% for post in site.posts %}
-    <article class="post">
-	<h3 style="color: #045FB4; font-size:130%; font-weight:normal;"><a href="{{ site.baseurl | remove: '<p>' | remove: '</p>' }}{{ post.url | remove: '<p>' | remove: '</p>' }}">{{ post.title | remove: '<p>' | remove: '</p>' }}</a></h3> 
-	<span style="color: #A0A0A0; font-size:90%;">{{ post.date  | date_to_string  | remove: '<p>' | remove: '</p>' }} {% if post.comments %}(<a style="color: #A4A4A4;" href="{{ site.baseurl }}{{ post.url }}#disqus_thread">0 Comments</a>){% endif %}</span>  
-    </article>
-  {% endfor %}
-</div> 
+<center><p class="avatar"><img alt="avatar" align="middle" src="{{ site.avatar }}"  /></p></center>
+
+<p style="font-family:Open Sans; font-style: normal; font-variant: normal; font-weight: 400; font-size:150%; text-align:center;">
+<b>Adrián Núñez Marcos</b> 
+</p>
+
+<p style="font-family:Open Sans; font-style: normal; font-variant: normal; font-weight: 400; text-align:center; margin-bottom: 2pt;">
+PhD student, Data scientist.
+</p>
+
+<p style="margin-bottom: 1cm;">My name is Adrián Núñez-Marcos, I'm a Phd student at Deustotech-INTERNET, University of Deusto, Spain and a Basque Government grant holder. My research centers around the application of Deep Learning and Computer Vision techniques to the field of Human Activity Recognition. I received my BSc in Computer Engineering in 2015 and the MSc in Computer Sciences and Intelligent Systems in 2016 from the University of the Basque Country, Spain. Previously, I enrolled the Erasmus+ program in Albert-Ludwigs-Universität Freiburg for 6 months in 2015 where I attended subjects like Statistical Pattern Recognition and Introduction to Mobile Robotics. Moreover, I did an internship for 8 months from October 2015 to June 2016.</p>
+
+
+
+<center style="margin-bottom: 1pt;"><p><span class="cloud" style="background-color: #CECEF6;">Neural Networks</span> <span class="cloud" style="background-color: #CECEF6;">Computer Vision</span> <span class="cloud" style="background-color: #CECEF6;">Human Activity Recognition</span></p></center>
+
+<center><p><span class="cloud" style="background-color: #F3E2A9;"><a href="https://scholar.google.es/citations?user=CRdHnOEAAAAJ&hl=es&authuser=2">Google Scholar</a></span> <span class="cloud" style="background-color: #F3E2A9;"><a href="https://www.researchgate.net/profile/Adrian_Nunez_Marcos">Research Gate</a></span> <span class="cloud" style="background-color: #F3E2A9;"><a href="http://orcid.org/0000-0002-5324-4514">ORCID</a></span></p></center>
+
+<h3>Contact</h3>
+
+<p>Contact: <a href="mailto:adrian.nunez@deusto.es">adrian.nunez@deusto.es</a></p>
+
+<p>Visit my personal page of the research group: <a href="http://morelab.deusto.es/people/members/adrian-nunez/">MORElab personal page</a></p>

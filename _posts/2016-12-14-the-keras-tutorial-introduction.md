@@ -160,7 +160,7 @@ keras.layers.core.Dropout(p)
 
 ### Initialisation
 
-The [initialisation section](https://keras.io/initializations/) in the webpage of Keras provides a list of all the initialisation options implemented in Keras. You have to import them:
+The initialisation of a neural network (non-convex function) is important as we try to make it converge. We should initialise all neurons with a specific method. The [initialisation section](https://keras.io/initializations/) in the webpage of Keras provides a list of all the initialisation options implemented in Keras. First, you have to import them:
 
 {% highlight python %}
 from keras.initializations import uniform

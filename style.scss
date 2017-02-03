@@ -212,7 +212,7 @@ img {
 
 nav {
   float: right;
-  margin-top: 5px; // @TODO: Vertically middle align
+  margin-top: 15px; // @TODO: Vertically middle align
   font-family: $helveticaNeue;
   font-size: 18px;
 
@@ -284,6 +284,32 @@ footer {
   padding: 20px 0;
   text-align: center;
 }
+
+.avatar {
+  width: 150px;
+  height: 150px;
+  display: block;
+  margin: 0 auto;
+
+  @include mobile {
+    float: none;
+    display: block;
+    margin: 0 auto;
+  }
+
+  img {
+    border-radius: 50%;
+    border: 5px solid #D8D8D8;
+  }
+}
+
+.cloud {
+   min-width: 10px;
+   width: 100%;
+   border-radius: 30%;
+   padding: 3px 7px 3px 7px;
+}
+
 
 // Settled on moving the import of syntax highlighting to the bottom of the CSS
 // ... Otherwise it really bloats up the top of the CSS file and makes it difficult to find the start
