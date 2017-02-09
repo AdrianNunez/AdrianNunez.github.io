@@ -77,7 +77,7 @@ model = Model(input=a, output=b)
 
 The first two lines are the imports. No need for explanation, we need to import all the layers, optimizers, functions for the initilisation of layers, etc. we want to use.
 
-The Functional API forces you to include an input layer. Here you have to specify the shape of your input (without the batch size). In this example we only have a 1D input of 32 values, i.e., the shape of your input would be (batch size, number of features) but you don't add the batch size, therefore you only need specify the dimensionality of the input or, in this case, the number of features). The comma after the value 32 is also mandatory in some cases to avoid errors. Anyway, your full input layer is stored in the variable 'a', so you can use this variable as input to other variables to create links (this allows the network to branch out easily).
+The Functional API forces you to include an input layer. Here you have to specify the shape of your input (without the batch size). In this example we only have a 1D input of 32 values. The comma after the value 32 is also mandatory in some cases to avoid errors. Anyway, your full input layer is stored in the variable 'a', so you can use this variable as input to other variables to create links (this allows the network to branch out easily).
 
 Now we include a Dense layer by calling the function and providing the number of neurons for that layer (in this case 32). The next step is to stack the output layer or dense layer on top of the input layer, i.e., we have to connect them. In this type of model we do this by providing the variable of the last layer at the end of the new layer (check the 'a' between parenthesis after the Dense layer).
 
