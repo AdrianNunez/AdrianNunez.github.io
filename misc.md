@@ -10,7 +10,9 @@ permalink: /miscellany/
 
 ### Courses
 
-* Coursera: Object Detection, Universitat Autònoma de Barcelona (UAB) ([Certificate](https://www.coursera.org/account/accomplishments/certificate/4V84PU57G494))
+* *Object Detection Course* (Universitat Autònoma de Barcelona) ([Statement of accomplishment](https://www.coursera.org/account/accomplishments/certificate/4V84PU57G494))
+* *Machine Learning Course* by Andrew Ng (Standford University) [Currently working on it]
+* *Reinforcement Learning Course* by David Silver (Google DeepMind) [Currently working on it]
 
 ### Others
 
