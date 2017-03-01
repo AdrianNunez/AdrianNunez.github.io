@@ -15,9 +15,9 @@ comments: true
 </script>
 
 <article class="post">
-  <center><h1 style="margin-bottom: 1cm;">{{ page.title }}</h1></center>
-  <div class="date" style="text-align: right; text-decoration: normal; font-size: 90%;">
-    Written on {{ page.date | date: "%B %e, %Y" }}
+  <h1 style="font-size:180%;">{{ page.title }}</h1>
+  <div class="date" style=" text-decoration: normal; font-size: 90%; margin-bottom: 1cm; ">
+    {{ page.date | date_to_string }}
   </div>
 
   <div class="entry">

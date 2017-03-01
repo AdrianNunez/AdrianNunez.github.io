@@ -11,7 +11,7 @@ permalink: /miscellany/
 ### Courses
 
 * *Object Detection Course* (Universitat Autònoma de Barcelona) ([Statement of accomplishment](https://www.coursera.org/account/accomplishments/certificate/4V84PU57G494))
-* *Machine Learning Course* by Andrew Ng (Standford University) [Currently working on it]
+* *Machine Learning Course* by Andrew Ng (Standford University) ([Statement of accomplishment](https://www.coursera.org/account/accomplishments/certificate/KVLMG2JDHPFG))
 * *Reinforcement Learning Course* by David Silver (Google DeepMind) [Currently working on it]
 
 ### Others

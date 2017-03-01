@@ -6,18 +6,16 @@ tags: Neural Networks Keras Tutorial
 comments: true
 ---
 
-#### Index
+[Keras](https://keras.io/) is a high-level neural networks library written in Python and built on top of [Theano](http://deeplearning.net/software/theano/) or [Tensorflow](https://www.tensorflow.org/). That means you need one of them as a backend for Keras to work. I have been working with Neural Networks for a while, I have tried  [Caffe](http://caffe.berkeleyvision.org/), Tensorflow and [Torch](http://torch.ch/) and now I'm working with Keras. Its main advantage is the minimalism of the code as it allows the creation of big networks with a few lines of code. It allows multi-input and multi-ouput networks, convolutional and recurrent neural networks, embeddings, etc. I'm really comfortable working with it so I thought it would be nice to write some paragraphs to explain how it works and the tricks I found. I hope this tutorial is helpful for new users.
 
-* What is Keras?
+### Index
+
 * Download and Install Keras
+* Backend
 * Our first Neural Network
 * The basic layers
 
-### What is Keras?
-
-[Keras](https://keras.io/) is a high-level neural networks library written in Python and built on top of [Theano](http://deeplearning.net/software/theano/) or [Tensorflow](https://www.tensorflow.org/). That means you need one of them as a backend for Keras to work. I have been working with Neural Networks for a while, I have tried  [Caffe](http://caffe.berkeleyvision.org/), Tensorflow and [Torch](http://torch.ch/) and now I'm working with Keras. Its main advantage is the minimalism of the code as it allows the creation of big networks with a few lines of code. It allows multi-input and multi-ouput networks, convolutional and recurrent neural networks, embeddings, etc. I'm really comfortable working with it so I thought it would be nice to write some paragraphs to explain how it works and the tricks I found. I hope this tutorial is helpful for new users.
-
-### Download and Install Keras
+## Download and Install Keras
 
 Before we actually install Keras let's make our life easier and install the pip program.
 
@@ -31,36 +29,70 @@ Now we can easily install the dependencies:
 pip install numpy scipy scikit-learn pillow h5py
 {% endhighlight %}
 
-As I appointed in my first paragraph, Keras works on top of either Theano or Tensorflow, therefore we will need to install one of them. I work with Theano because it's easier to install in my case.
+Next we install Keras:
 
 {% highlight ruby %}
-pip install Theano
 pip install keras
 {% endhighlight %}
 
-Now we have to specify that we want Theano as a backend ([link](https://keras.io/backend/)).
+You can check the version of Keras you are using by typing the following command in the terminal:
+
+{% highlight ruby %}
+python -c "import keras; print keras.__version__"
+{% endhighlight %} 
+
+Moreover, you can upgrade Keras with the following command:
+
+{% highlight ruby %}
+sudo pip install --upgrade keras
+{% endhighlight %}
+
+## Backend
+
+As I mentioned earlier, Keras works on top of Tensorflow (by default) or Theano. I tend to use Theano as my backend. To specify which [backend](https://keras.io/backend/) we want to use we have to edit the keras.json file:
 
 {% highlight ruby %}
 nano ~/.keras/keras.json
 {% endhighlight %}
 
-In this file change the backend to Theano and the image ordering from 'tf' (which is the default option for Tensorflow) to 'th'. Note that the image ordering in Tensorflow is (width, height, channels) and in Theano is (channels, width, height). Finally, if you want to run Keras in your GPU you have to create a file '~/.theanorc' ('touch ~/.theanorc' in your command prompt) and include the following:
+Example of the content of my keras.json file using Theano:
+
+{% highlight ruby %}
+{
+    "image_dim_ordering": "th", 
+    "epsilon": 1e-07, 
+    "floatx": "float32", 
+    "backend": "theano"
+}
+{% endhighlight %}
+
+In the 'backend' variable we can specify 'theano' or 'tensorflow'. The 'image_dim_ordering' ('th' for theano and 'tf' for tensorflow) is used to specify the arrangement of the dimensions in images, i.e. in Theano we use the order (channels, width, height) whereas in Tensorflow the order is (width, height, channels). In the case of theano, you have to create a file '~/.theanorc':
+
+{% highlight ruby %}
+touch ~/.theanorc
+{% endhighlight %}
+
+And include the following:
 
 {% highlight ruby %}
 [global]
 floatX = float32
-device = gpu0
-
+device = gpu
+optimizer = fast_run
+ 
 [lib]
-cnmem = 1.0 
-
+cnmem = 0.9
+ 
+[nvcc]
+fastmath = True
+ 
 [blas]
-ldflags="-L/usr/lib/openblas-base -lopenblas"
+ldflags = -llapack -lblas
 {% endhighlight %}
 
-If you want to use the CPU change 'gpu0' to 'cpu'. With this final steps we should have keras ready to work with Theano. 
+If you want to use the CPU change 'gpu0' to 'cpu'. With this final steps we should have keras ready to work with Theano.
 
-### Our first Neural Network
+## Our first Neural Network
 
 First I will say that Keras has two different structures to create Neural Networks: the Sequential Model and the Functional API. We will work with the second one through the tutorial as it allows more freedom. If you have heard about the Graph Model I have to say that it was removed (therefore it's now deprecated) in the version 1.0 ([link](https://github.com/fchollet/keras/issues/2802#issuecomment-221314411)).
 
@@ -121,7 +153,7 @@ You have to provide it with test data or data that has not been used during trai
 
 And this concludes our first neural network tutorial! I will write now about some basic stuff about Neural Networks: layers, initialisation, etc. I hope it's clear enough. For any question or suggestions please use the comments section below.
 
-### The basic layers
+## The basic layers
 
 * Input layer: The input layer specifies the shape of the input. This replaces the old and mandatory parameter 'input_shape' that had to be added to the first layer of the network. The parameter shape expects the shape without the batch size. The final comma is also necessary.
 
@@ -159,7 +191,7 @@ keras.layers.merge(layers, mode, concat_axis)
 keras.layers.core.Dropout(p)
 {% endhighlight %}
 
-### Initialisation
+## Initialisation
 
 The initialisation of a neural network (non-convex function) is important as we try to make it converge. We should initialise all neurons with a specific method. The [initialisation section](https://keras.io/initializations/) in the webpage of Keras provides a list of all the initialisation options implemented in Keras. First, you have to import them:
 
