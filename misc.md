@@ -10,9 +10,10 @@ permalink: /miscellany/
 
 ### Courses
 
-* *Object Detection Course* (Universitat Autònoma de Barcelona) ([Statement of accomplishment](https://www.coursera.org/account/accomplishments/certificate/4V84PU57G494))
-* *Machine Learning Course* by Andrew Ng (Standford University) ([Statement of accomplishment](https://www.coursera.org/account/accomplishments/certificate/KVLMG2JDHPFG))
-* *Reinforcement Learning Course* by David Silver (Google DeepMind) [Currently working on it]
+* *Object Detection* (Universitat Autònoma de Barcelona) ([Statement of accomplishment](https://www.coursera.org/account/accomplishments/certificate/4V84PU57G494))
+* *Machine Learning* by Andrew Ng (Standford University) ([Statement of accomplishment](https://www.coursera.org/account/accomplishments/certificate/KVLMG2JDHPFG))
+* *Intro to Artificial Intelligence* by Peter Norvig and Sebastian Thrun (Kaggle) [Currently working on it]
+* *Reinforcement Learning* by David Silver (Google DeepMind) [Currently working on it]
 
 ### Others
 
