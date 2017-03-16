@@ -64,8 +64,8 @@ def validationGenerator():
 
 nb_training_files = 100
 nb_val_files = 10
-myTrainingGenerator = myTrainingGenerator()
-myValidationGenerator = myValidationGenerator()
+myTrainingGenerator = trainingGenerator()
+myValidationGenerator = validationGenerator()
 history = model.fit_generator(generator=myTrainingGenerator, steps_per_epoch=nb_training_files, epochs=1, validation_data=myValidationGenerator, validation_steps=nb_val_files)
 {% endhighlight %}
 
