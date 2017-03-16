@@ -13,6 +13,6 @@ permalink: /blog/
 	<span style="color: #A0A0A0; font-size:90%;">{{ post.date  | date_to_string  | remove: '<p>' | remove: '</p>' }} {% if post.comments %}(<a style="color: #A4A4A4;" href="{{ site.baseurl }}{{ post.url }}#disqus_thread">0 Comments</a>){% endif %}</span>  
     </article>
   {% endfor %}
-<a href="{{ site.baseurl | remove: '<p>' | remove: '</p>' }}/post_index">>> Index of posts</a>
+<a href="{{ site.baseurl | remove: '<p>' | remove: '</p>' }}/post_index">>> Check all the posts here</a>
 </div> 
 
