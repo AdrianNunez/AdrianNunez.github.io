@@ -44,7 +44,6 @@ i = 0
 h5 = h5py.File('/home/anunez/project/caffedata.h5')
 
 for layer in layerscaffe[:-3]:
-	w, b = model.get_layer(layerskeras[i]).get_weights()
 	w2, b2 = h5['data'][layer]['0'], h5['data'][layer]['1']
 	w2 = np.transpose(w2, (0,1,2,3))
 	w2 = w2[:, :, ::-1, ::-1]
@@ -54,7 +53,6 @@ for layer in layerscaffe[:-3]:
 	i += 1
 
 for layer in layerscaffe[-3:]:
-	w, b = model.get_layer(layerskeras[i]).get_weights()
 	w2, b2 = h5['data'][layer]['0'], h5['data'][layer]['1']      
 	w2 = np.transpose(w2,(1,0))
 	b2 = np.asarray(b2)
@@ -68,7 +66,7 @@ I will explain this code little by little. In general:
 * First, I have 2 arrays of layer names. If you change the layer names in the VGG16 of Keras to adapt it to Caffe's names you can skip this.
 * Then, we will do 2 loops: one for the convolutional layers and the other for the fully connected layers.
 
-The first loop goes loading the weights we saved in the 'caffedata.h5' file into the variables w2 and b2 (weights and biases, respectively). w and b have the original values of the VGG16. I use them to get the shape. so, fist important change: remember the image dimensions order, we have to use a transpose operation of the numpy module (previously called permute) to get the correct permutation of dimensions. We also need to flip the values of the dimensions width and height. I found this explanation in this [post](https://gab41.lab41.org/taking-keras-to-the-zoo-9a76243152cb#.es7mhsx34). Check it out for more details. 
+The first loop goes loading the weights we saved in the 'caffedata.h5' file into the variables w2 and b2 (weights and biases, respectively). First important change: remember the image dimensions ordering: we have to use a transpose operation of the numpy module (previously called permute) to get the correct permutation of dimensions. We also need to flip the values of the dimensions width and height. I found this explanation in this [post](https://gab41.lab41.org/taking-keras-to-the-zoo-9a76243152cb#.es7mhsx34). Check it out for more details. 
 
 Next, we cast b2 to a numpy array so that both w2 and b2 have the same format. To set this weights we use the 'get_layer' function of the model (with the name in Keras), get the parameter (W or b) and use 'set_value' to set our weights.
 
