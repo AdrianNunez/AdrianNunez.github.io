@@ -12,7 +12,7 @@ permalink: /miscellany/
 
 * *Object Detection* (Universitat Autònoma de Barcelona) ([Statement of accomplishment](https://www.coursera.org/account/accomplishments/certificate/4V84PU57G494))
 * *Machine Learning* by Andrew Ng (Standford University) ([Statement of accomplishment](https://www.coursera.org/account/accomplishments/certificate/KVLMG2JDHPFG))
-* *Reinforcement Learning* by David Silver (Google DeepMind) [Currently working on it]
+* *Clasificación de imágenes: ¿cómo reconocer el contenido de una imagen?* (Universitat Autònoma de Barcelona) ([Statement of accomplishment](https://www.coursera.org/account/accomplishments/certificate/UYYPT9F9LD4V))
 
 ### Others
 
