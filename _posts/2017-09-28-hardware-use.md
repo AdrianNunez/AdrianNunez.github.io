@@ -8,8 +8,8 @@ comments: true
 
 In Deep Learning projects, where I am used to occupy a great amount of memory, I found very useful to have a way of measuring my use of the space in RAM and VRAM (GPU memory). Here I will provide some tools to do this, although they may be better options I found that these solutions are easy to put in practice.
 
-Theano version: 0.8.2
-Tensorflow version: 0.12
+Theano version: 0.8.2. 
+Tensorflow version: 0.12.
 
 ## RAM memory
 
@@ -54,3 +54,21 @@ cnmem = 0
 {% endhighlight %}
 
 With this change applied we will see that now we can actually measure the real space occupied by our model and data.
+
+#### Solution in Tensorflow
+
+For tensorflow the solution is to add this at the start of your project:
+
+{% highlight python %}
+import tensorflow as tf
+import keras.backend.tensorflow_backend as K
+
+config = tf.ConfigProto()
+config.gpu_options.allow_growth=True
+sess = tf.Session(config=config)
+K.set_session(sess)
+{% endhighlight %}
+
+
+
+
