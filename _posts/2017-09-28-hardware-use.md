@@ -6,10 +6,9 @@ tags: Keras Tutorial Python GPU CPU Hardware
 comments: true
 ---
 
-In Deep Learning projects, where I am used to occupy a great amount of memory, I found very useful to have a way of measuring my use of the space in RAM and VRAM (GPU memory). Here I will provide some tools to do this, although they may be better options I found that these solutions are easy to put in practice.
+In Deep Learning projects, where we usually occupy a great amount of memory, I found very useful to have a way of measuring my use of the space in RAM and VRAM (GPU memory). Here I will provide some tools to do this, although they may be better options I found that these solutions are easy to put in practice.
 
-Theano version: 0.8.2. 
-Tensorflow version: 0.12.
+Theano version: 0.8.2. Tensorflow version: 0.12.
 
 ## RAM memory
 
