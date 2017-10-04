@@ -12,7 +12,7 @@ Theano version: 0.8.2. Tensorflow version: 0.12.
 
 ## RAM memory
 
-To control the use of RAM we make use of the psutil python package, you can install it via pip:
+To control the occupied space in RAM we make use of the "psutil" python package, you can install it via pip:
 
 {% highlight ruby %}
 pip install psutil
@@ -41,8 +41,6 @@ With these lines we will have the amount of RAM employed printed in the screen.
 
 VRAM is the memory inside a GPU where the neural network model and data mini-batches are stored. We can see the occupied space using the command "nvidia-smi" in a terminal. However, by default both Theano and Tensorflow preallocate memory. Thus, we do not know the real space that we are using.
 
-Note: you can use "watch nvidia-smi" so that the output is refreshed automatically.
-
 #### Solution in Theano
 
 Go to the "theanorc" file and add the following:
@@ -68,6 +66,11 @@ sess = tf.Session(config=config)
 K.set_session(sess)
 {% endhighlight %}
 
+#### Checking VRAM
 
+The nvidia-smi will show you the use of VRAM in a single moment, but it's more interesting to actually have it in real-time. I found two ways of doing this:
+
+* watch nvidia-smi: refreshes the output every 2 seconds, nice for monitoring.
+* nvidia-smi -l 1: outputs appear one after another. I would redirect the output to a file, like "nvidia-smi -l 1 > output.txt", so that you have all the possible outputs to be checked later in a single file. The value of the parameter "l" indicates the frequency for printing the output, in this case 1 second.
 
 
