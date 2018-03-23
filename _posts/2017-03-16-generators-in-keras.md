@@ -26,11 +26,11 @@ What makes it special? When next() is called the function executes a part of the
 
 ## Generators in Keras
 
-What is the use of these generators in Keras? Well, Keras has various functions to train and evaluate a model, and also to make predictions (check the full list [here](https://keras.io/models/model/)). Among them we have the fit_, evaluate_ and predict_generator functions. They accept a generator as input instead of a list of data (like fit, evaluate and predict) or batches of data (like train_on_batch and test_on_batch). This is specially useful when we want to make a cleaner code.
+What is the use of these generators in Keras? Well, Keras has various functions to train and evaluate a model, and also to make predictions (check the full list [here](https://keras.io/models/model/)). Among them we have the fit_, evaluate_ and predict_generator functions. They accept a generator as input instead of a list of data (like fit, evaluate and predict) or batches of data (like train_on_batch and test_on_batch). 
 
 * We can read data from our computer without creating big loops with fit or train_on_batch functions (same for test purpouses).
 * When training with lots of data we can get each batch inside the generator and yield it, becoming really transparent for the main function where we load the data, the model and call the training and test.
-* Useful for data augmentation on training time.
+* Useful for data augmentation on training time. In fact, this method parallelizes the data augmentation in CPU with the training in GPU.
 
 The fit_generator function also accepts a validation generator like the fit function, which is pretty nice.
 
