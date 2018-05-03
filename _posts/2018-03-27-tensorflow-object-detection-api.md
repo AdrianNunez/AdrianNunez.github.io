@@ -10,12 +10,12 @@ Note: I'm using Ubuntu 16.04 and Tensorflow-GPU 1.6.0 installed via pip for this
 
 Tensorflow has its own Object Detection API with tutorials and a ModelZoo, you can find it [here](https://github.com/tensorflow/models/tree/master/research/object_detection). With so much documentation it can be difficult to actually get your model working on your own dataset, so I will try to summarize my experience using it. The tutorial will by composed of the following parts:
 
-* Installing the Object Detection API
-* (Optional) Labelling your dataset
-* Preparing the dataset
-* Finetune the network with your dataset
-* Export the finetuned graph
-* Evaluation in your dataset
+* 1. Installing the Object Detection API
+* 2. Preparing the dataset
+* 3. Convert data to TFRecord format
+* 4. Prepare the directory structure
+* 5. Finetune the network with your dataset
+* 6. Export the finetuned graph
 
 ## 1. Installing the Object Detection API
 
@@ -169,11 +169,66 @@ with tf.Session(graph=tf.Graph()) as sess:
     detection_boxes_op = detection_graph.get_tensor_by_name('detection_boxes:0')
     detection_scores_op = detection_graph.get_tensor_by_name('detection_scores:0')
 
-    image = cv2.imread(path_to_image)
+    image = load_image(path_to_image)
     feed_dict = {input_tensor: np.expand_dims(image,0)}
     classes = sess.run(predict_class_op, feed_dict)
 {% endhighlight %}
 
 In this example we obtain the classes predicted by the network for a given image. Notice that you will obtain an array of integers. Each integer is the ID number of the class specified in the label map file. This means that the first class is 1, you need to subtract a 1 from the class in order to start from 0.
 
+I have noticed that using SciPy or OpenCV functions to load the images makes the network to have a really bad performance. Therefore our 'load_image' function should be implemented in the following way:
 
+{% highlight python %}
+def load_image(sess, image_path):
+	image_file = open(image_path,'rb')
+	image_raw = image_file.read()
+
+	image_tf = tf.image.decode_jpeg(image_raw).eval(session=sess)
+	image_tf_accurate = tf.image.decode_jpeg(image_raw,dct_method="INTEGER_ACCURATE").eval(session=sess)
+{% endhighlight %}
+
+Note that if you do not pass the session as argument and you create another session your 'load_image' function will be extremely slow.
+
+{% highlight python %}
+def load_image(sess, image_path):
+	image_file = open(image_path,'rb')
+	image_raw = image_file.read()
+
+	image_tf = tf.image.decode_jpeg(image_raw).eval(session=sess)
+	image_tf_accurate = tf.image.decode_jpeg(image_raw,dct_method="INTEGER_ACCURATE").eval(session=sess)
+{% endhighlight %}
+
+#### 6.1. Visualize the predicted Bounding Boxes
+
+There is an utility to visualize the bounding boxes in PASCAL VOC format.
+
+{% highlight python %}
+import object_detection.utils.visualization_utils as vis_util 
+label_map_path = 'data/gaze+_label_map.pbtxt'
+nb_objects = ...
+
+label_map = label_map_util.load_labelmap(label_map_path)
+categories = label_map_util.convert_label_map_to_categories(label_map=label_map, max_num_classes=nb_objects)
+category_index = label_map_util.create_category_index(categories)
+
+...
+
+classes = sess.run(predict_class_op,feed_dict)[0]
+num_detections = sess.run(num_detections_op,feed_dict)[0]
+bounding_boxes = sess.run(detection_boxes_op,feed_dict)[0]
+scores = sess.run(detection_scores_op,feed_dict)[0]
+
+...
+
+vis_util.visualize_boxes_and_labels_on_image_array(
+	img,
+	bounding_boxes,
+	np.squeeze(classes).astype(np.int32),
+	scores,
+	category_index,
+	use_normalized_coordinates=False,
+	line_thickness=4,
+	min_score_thresh=0.5)
+{% endhighlight %}
+
+This function requires an image 'img', the output from the different ops (classes, bounding_boxes and scores) and a category_index object (this object is created using the label map file in the 'data' folder). You can adjust the thickness of the bounding boxes with the 'line_thickness' and also limit the bounding boxes that appear only to those with a score higher than 'min_score_thresh'.
