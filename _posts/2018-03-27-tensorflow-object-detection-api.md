@@ -10,12 +10,12 @@ Note: I'm using Ubuntu 16.04 and Tensorflow-GPU 1.6.0 installed via pip for this
 
 Tensorflow has its own Object Detection API with tutorials and a ModelZoo, you can find it [here](https://github.com/tensorflow/models/tree/master/research/object_detection). With so much documentation it can be difficult to actually get your model working on your own dataset, so I will try to summarize my experience using it. The tutorial will by composed of the following parts:
 
-* 1. Installing the Object Detection API
-* 2. Preparing the dataset
-* 3. Convert data to TFRecord format
-* 4. Prepare the directory structure
-* 5. Finetune the network with your dataset
-* 6. Export the finetuned graph
+1. Installing the Object Detection API
+2. Preparing the dataset
+3. Convert data to TFRecord format
+4. Prepare the directory structure
+5. Finetune the network with your dataset
+6. Export the finetuned graph
 
 ## 1. Installing the Object Detection API
 
