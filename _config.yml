@@ -31,7 +31,7 @@ tagline:               >
   PhD student in Computer Vision and Machine Learning at the University of Deusto, Spain
 
 # A list of keywords for your blog
-keywords:              []
+keywords:              [machine learning, computer vision, phd]
 
 # A (square) logo for your site.
 # If provided, it will be shown at the top of the sidebar.
@@ -39,11 +39,11 @@ keywords:              []
 logo:                  /assets/img/pic.jpg
 
 # This should be the same author as first entry in `_data/authors.yml`.
-author:
-  name:                Adrián Núñez-Marcos
-  email:               adrian.nunez@deusto.es
-  # Used by `jekyll-seo-tag`:
-  twitter:             anunezmarcos
+#author:
+#  name:                Adrián Núñez-Marcos
+#  email:               adrian.nunez@deusto.es
+#  # Used by `jekyll-seo-tag`:
+#  twitter:             anunezmarcos
 
 # This text will appear in a `<small>` tag in the footer of every page.
 copyright:             >
@@ -245,7 +245,7 @@ include:
 
 plugins:
   - jekyll-default-layout
-  - jekyll-feed
+#  - jekyll-feed
   - jekyll-optional-front-matter
   - jekyll-paginate
   - jekyll-readme-index
